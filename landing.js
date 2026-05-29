@@ -15,8 +15,8 @@ import { contactSection } from './contact.js';
 
 const introSection = {
     name: 'intro',
-    texture: 'assets/intro.webp',
-    mtexture: 'assets/mobileTexture.webp',
+    texture: '/assets/intro.webp',
+    mtexture: '/assets/mobileTexture.webp',
     bloom: 0.22,
     rgbShift: 0.0005,
     driftStrength: 1,

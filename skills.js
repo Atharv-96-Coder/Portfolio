@@ -1,7 +1,7 @@
 export const skillsSection = {
     name: 'skills',
-    texture: 'assets/skills.webp',
-    mtexture: 'assets/mobileTexture.webp',
+    texture: ' /assets/skills.webp',
+    mtexture: '/assets/mobileTexture.webp',
     bloom: 0.30,
     rgbShift: 0.00075,
     driftStrength: 1.18,

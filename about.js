@@ -1,7 +1,7 @@
 export const aboutSection = {
     name: 'about',
-    texture: 'assets/about.webp',
-    mtexture: 'assets/mobileTexture.webp',
+    texture: '/assets/about.webp',
+    mtexture: '/assets/mobileTexture.webp',
     bloom: 1.20,
     rgbShift: 0.00045,
     driftStrength: 0.82,

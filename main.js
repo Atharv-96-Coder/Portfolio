@@ -19,19 +19,19 @@ let activeSectionIndex = 0;
 let snapLocked = false;
 let currentTextureIndex = -1;
 
-const moon = new Audio('fx/moon.mp3');
+const moon = new Audio('/fx/moon.mp3');
 moon.preload = 'auto';
 moon.volume = 1;
 
-const underWater = new Audio('fx/underwater.mp3');
+const underWater = new Audio('/fx/underwater.mp3');
 underWater.preload = 'auto';
 underWater.volume = 0.9;
 
-const whale = new Audio('fx/whale.mp3');
+const whale = new Audio('/fx/whale.mp3');
 whale.preload = 'auto';
 whale.volume = 0.2;
 
-const hovers = new Audio('fx/hover.wav')
+const hovers = new Audio('/fx/hover.wav')
 hovers.preload = 'auto';
 hovers.volume = 1;
 
