@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/three@0.146.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      font-family: 'Inter', sans-serif;
+    }
+
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+
+    .container {
+      position: absolute;
+      z-index: 2;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+
+    .error-code {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(120px, 15vw, 100px);
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.222);
+      opacity: 0.8;
+    }
+    .msg{
+      color:white;
+      opacity: 0.6;
+    }
+
+    .error-code span {
+      position: relative;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+
+      background: #000;
+      color: rgb(113, 110, 110);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s, border-color 0.3s, background 0.3s;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgb(0, 0, 0), transparent);
+      transition: left 1.6s;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button:hover {
+ 
+      border-color: #000000;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.10) 35%, rgba(0, 0, 0, 0.95) 100%);
+    
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <audio id="bg-music" src="assets/clavier-music-calm-space-music-312291.mp3" autoplay volume="0.25" loop>
+    </audio>
+    <div class="error-code">
+      <span>4</span>
+      <span>0</span>
+      <span>4</span><br>
+    </div>
+<p class="msg">Section Under Development.<br> 
+</p>
+<p class="msg" style="opacity: 0.4;">Due To War Between Nations , The Material is Unavailable. Rebuilding the depths soon.</p>
+<button>Return</button>
+  </div>
+
+  <script>
+
+
+    const audio = document.getElementById("bg-music");
+    audio.volume = 0.45;
+    const btn = document.querySelector("button");
+    btn.addEventListener("click", () => {
+      window.location.href = "loader.html?next=experience.html";
+    });
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 15;
+
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true
+    });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.append(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    const starGeometry = new THREE.BufferGeometry();
+    const starVertices = [];
+
+    for (let i = 0; i < 10000; i++) {
+      starVertices.push(
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000
+      );
+    }
+
+    starGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(starVertices, 3)
+    );
+
+    const starMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 1,
+      opacity: 1.3,
+         map: new THREE.TextureLoader().load('assets/stars.jpg'),
+        transparent: true,
+    });
+
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // stars.rotation.x += 0.0005;
+      stars.rotation.z += 0.0005;
+  
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+
+</body>
+
+</html>

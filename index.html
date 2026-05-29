@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <title>Portfolio </title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+            user-select: none;
+        }
+
+        body {
+            background: #101014;
+            min-height: 100svh;
+            margin: 0;
+            padding: clamp(24px, 7vw, 72px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            text-align: center;
+
+        }
+
+        h1 {
+            color: rgba(206, 206, 206, 0.836);
+            font-family: 'Inter', sans-serif;
+            font-weight: 100;
+            text-transform: uppercase;
+            max-width: 18ch;
+            margin: 0;
+            font-size: clamp(1.9rem, 7vw, 4.8rem);
+            line-height: 1.05;
+            overflow-wrap: anywhere;
+
+        }
+
+        button {
+            margin-top: clamp(20px, 5vw, 34px);
+            padding: 12px clamp(22px, 7vw, 34px);
+            /* border: 1px solid white; */
+            background: #000;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s, border-color 0.3s, background 0.3s;
+            border-radius: 8px;
+            font-size: clamp(0.85rem, 3.5vw, 1rem);
+            font-weight: 100;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            min-height: 44px;
+            max-width: 100%;
+            color: gray;
+
+        }
+
+        p {
+            color: gray;
+            opacity: 0.5;
+        }
+
+        p:before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgb(0, 0, 0), transparent);
+            transition: left 5s;
+        }
+
+        p:hover::before {
+            left: 100%;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.975), transparent);
+            transition: left 2s;
+    
+        }
+
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                max-width: 12ch;
+            }
+
+            button {
+                width: min(100%, 220px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ready for a cinematic web experience?</h1>
+    <br>
+    <p>
+        [ For the full immersive atmosphere, this portfolio is best explored on desktop. ]
+    </p>
+
+    <button class="enterbtn">
+        <span>Proceed !</span>
+    </button>
+    <script defer>
+
+            gsap.from('h1', {
+            opacity: 0,
+            duration: 1
+        })
+
+        gsap.from('.enterbtn', {
+            opacity: 0,
+            y: 8,
+            duration: 4,
+            delay: 2
+        })
+
+        const isMobile = /Android|iPhone|iPod/i.test(navigator.userAgent);
+
+        document.querySelector('.enterbtn').addEventListener('click', () => {
+            if (isMobile) {
+
+                const proceed = confirm("This portfolio is best experienced on desktop. Continue anyway? 🌙");
+
+                if (!proceed) return;
+            }
+
+            window.location.href = 'loader.html?next=experience.html';
+        });
+
+    </script>
+</body>
+
+</html>
