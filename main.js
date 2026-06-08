@@ -29,7 +29,7 @@ underWater.volume = 0.9;
 
 const whale = new Audio('/fx/whale.mp3');
 whale.preload = 'auto';
-whale.volume = 0.2;
+whale.volume = 0.7;
 
 const hovers = new Audio('/fx/hover.wav')
 hovers.preload = 'auto';

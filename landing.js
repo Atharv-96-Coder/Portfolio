@@ -85,14 +85,14 @@ export function landing(scene, camera, renderer) {
 
         },
 
-        vertexShader: `
+    vertexShader: `
     varying vec2 vUv;  
     void main(){
     vUv = uv;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }`,
 
-        fragmentShader: `
+    fragmentShader: `
 
     uniform sampler2D uTexture;
     uniform vec2 uMouse;
@@ -101,7 +101,6 @@ export function landing(scene, camera, renderer) {
     uniform float uDriftStrength;
     uniform float uColorBoost;
     uniform vec3 uTint;
-
     varying vec2 vUv;
 
     void main(){
@@ -193,7 +192,7 @@ export function landing(scene, camera, renderer) {
     const cv = document.querySelector('.cv');
     cv.addEventListener("mouseenter", () => {
 
-          if(window.innerWidth <= 914) return;
+        if (window.innerWidth <= 914) return;
         const tl = gsap.timeline();
 
         tl.to(shaderMaterial.uniforms.uColorBoost, {
@@ -219,7 +218,7 @@ export function landing(scene, camera, renderer) {
     });
     const connect = document.querySelector('.btn');
     connect.addEventListener("mouseenter", () => {
-          if(window.innerWidth <= 914) return;
+        if (window.innerWidth <= 914) return;
 
         gsap.to(shaderMaterial.uniforms.uColorBoost, {
             value: 10.0,
